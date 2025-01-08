@@ -15,7 +15,7 @@ const rules = {
     password: { required, minLength: minLength(5) },
 };
 const form = reactive({
-    username: "haikal",
+    username: "najwa",
     password: "12345678",
 });
 const v$ = useVuelidate(rules, form);

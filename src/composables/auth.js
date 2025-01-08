@@ -25,7 +25,9 @@ export default function usePosts() {
                 authStore.isInvalid = true;
                 authStore.isMessage = result.data.data.message;
                 VueCookies.set("jwt", result.data.data.token, "1h");
-                await router.push({ name: "dashboard" });
+                VueCookies.set("user", result.data.data.user, "1h");
+                window.location.reload();
+                // await router.push({ name: "dashboard" });
             }
             // console.log(result.data.data.message)
             // console.log(result.data.data.token)
@@ -45,6 +47,7 @@ export default function usePosts() {
                 authStore.isInvalid = true;
                 authStore.isMessage = result.data.data.message;
                 VueCookies.set("jwt", result.data.data.token, "1h");
+                VueCookies.set("user", result.data.data.user, "1h");
                 await router.push({ name: "dashboard" });
             }
         } catch (error) {

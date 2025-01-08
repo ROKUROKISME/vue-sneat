@@ -7,9 +7,11 @@ const authStore = useAuthStore();
 
 const logOut = async () => {
     await $cookies.remove("jwt", "/");
+    await $cookies.remove("user", "/");
     authStore.isInvalid = true;
     authStore.isMessage = 'Anda berhasil keluar!';
-    await router.push({ name: "login" });
+    window.location.reload();
+    // await router.push({ name: "login" });
 }
 </script>
 

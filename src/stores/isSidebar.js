@@ -11,6 +11,7 @@ export const sidebarActive = defineStore({
   },
   getters: {
     activeNow: (state) => {
+
       return state.active;
     },
   },

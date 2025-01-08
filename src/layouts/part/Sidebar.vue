@@ -1,7 +1,11 @@
 <script setup>
-import { RouterLink } from 'vue-router';
+import { RouterLink, useRoute } from 'vue-router';
 import { sidebarActive } from '@/stores/isSidebar'
+
+const route = useRoute()
+
 const active = sidebarActive()
+
 
 </script>
 
@@ -65,17 +69,65 @@ const active = sidebarActive()
 
         <ul class="menu-inner py-1">
             <!-- Dashboard -->
-            <li class="menu-item" :class="[active.activeNow == 'Dashboard' ? 'active' : '']">
+            <li class="menu-item" :class="[route.path.split('/')['1'] == 'dashboard' ? 'active' : '']">
                 <router-link to="/dashboard" @click="active.isActive('Dashboard')" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-home-circle"></i>
                     <div data-i18n="Analytics">Dashboard</div>
                 </router-link>
             </li>
-            <li class="menu-item" :class="[active.activeNow == 'Users' ? 'active' : '']">
+
+            <li class="menu-header small text-uppercase">
+                <span class="menu-header-text">Master Data</span>
+            </li>
+            <li class="menu-item" :class="[route.path.split('/')['1'] == 'users' ? 'active' : '']">
                 <router-link to="/users" @click="active.isActive('Users')" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-user"></i>
                     <div data-i18n="Analytics">User</div>
                 </router-link>
+            </li>
+            <li class="menu-item" :class="[route.path.split('/')['1'] == 'admin' ? 'active' : '']">
+                <router-link to="/admin" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-user"></i>
+                    <div data-i18n="Analytics">Admin</div>
+                </router-link>
+            </li>
+            <li class="menu-item" :class="[route.path.split('/')['1'] == 'petugas' ? 'active' : '']">
+                <router-link to="/petugas" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-user"></i>
+                    <div data-i18n="Analytics">Petugas</div>
+                </router-link>
+            </li>
+            <li class="menu-item" :class="[route.path.split('/')['1'] == 'barang' ? 'active' : '']">
+                <router-link to="/barang" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-category"></i>
+                    <div data-i18n="Analytics">Barang</div>
+                </router-link>
+            </li>
+
+            <li class="menu-header small text-uppercase">
+                <span class="menu-header-text">Transaction</span>
+            </li>
+
+            <li class="menu-item" :class="[route.path.split('/')['1'] == 'transaksi' ? 'active' : '']">
+                <router-link to="/transaksi" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-desktop"></i>
+                    <div data-i18n="Analytics">Transaksi</div>
+                </router-link>
+            </li>
+
+            <li class="menu-header small text-uppercase">
+                <span class="menu-header-text">Report</span>
+            </li>
+
+            <li class="menu-item" :class="[route.path.split('/')['1'] == 'laporan-transaksi' ? 'active' : '']">
+                <router-link to="/laporan-transaksi" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-calendar"></i>
+                    <div data-i18n="Analytics">Laporan Transaksi</div>
+                </router-link>
+            </li>
+
+            <li class="menu-header small text-uppercase">
+                <span class="menu-header-text">Ends</span>
             </li>
 
             <!-- Layouts -->

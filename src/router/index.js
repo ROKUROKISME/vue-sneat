@@ -13,6 +13,22 @@ import RegisterView from '@/views/RegisterView.vue'
 import UsersView from '@/views/Users/Index.vue'
 import UserCreateView from '@/views/Users/Create.vue'
 import UserEditView from '@/views/Users/Edit.vue'
+// ADMIN
+import AdminView from '@/views/Admin/Index.vue'
+import AdminCreateView from '@/views/Admin/Create.vue'
+import AdminEditView from '@/views/Admin/Edit.vue'
+// PETUGAS
+import PetugasView from '@/views/Petugas/Index.vue'
+import PetugasCreateView from '@/views/Petugas/Create.vue'
+import PetugasEditView from '@/views/Petugas/Edit.vue'
+// BARANG
+import BarangView from '@/views/Barang/Index.vue'
+import BarangCreateView from '@/views/Barang/Create.vue'
+import BarangEditView from '@/views/Barang/Edit.vue'
+// TRANSAKSI
+import TransaksiView from '@/views/Transaksi/Index.vue'
+// LAPORAN
+import LaporanView from '@/views/Laporan/Index.vue'
 
 // MIDDLEWARE
 import Authentication from '@/middlewares/auth';
@@ -46,6 +62,52 @@ const router = createRouter({
           component: AboutView,
         },
         {
+          path: '/petugas',
+          meta: { requiresAuth: true },
+          beforeEnter: Authentication,
+          children: [
+            {
+              path: '',
+              name: 'petugas.index',
+              component: PetugasView
+            },
+            {
+              path: 'create',
+              name: 'petugas.create',
+              component: PetugasCreateView
+            },
+            {
+              path: 'edit/:id',
+              name: 'petugas.edit',
+              component: PetugasEditView,
+              props: true,
+            },
+          ]
+        },
+        {
+          path: '/admin',
+          meta: { requiresAuth: true },
+          beforeEnter: Authentication,
+          children: [
+            {
+              path: '',
+              name: 'admin.index',
+              component: AdminView
+            },
+            {
+              path: 'create',
+              name: 'admin.create',
+              component: AdminCreateView
+            },
+            {
+              path: 'edit/:id',
+              name: 'admin.edit',
+              component: AdminEditView,
+              props: true,
+            },
+          ]
+        },
+        {
           path: '/users',
           meta: { requiresAuth: true },
           beforeEnter: Authentication,
@@ -68,6 +130,53 @@ const router = createRouter({
             },
           ]
         },
+        {
+          path: '/barang',
+          meta: { requiresAuth: true },
+          beforeEnter: Authentication,
+          children: [
+            {
+              path: '',
+              name: 'barang.index',
+              component: BarangView
+            },
+            {
+              path: 'create',
+              name: 'barang.create',
+              component: BarangCreateView
+            },
+            {
+              path: 'edit/:id',
+              name: 'barang.edit',
+              component: BarangEditView,
+              props: true,
+            },
+          ]
+        },
+        {
+          path: '/transaksi',
+          meta: { requiresAuth: true },
+          beforeEnter: Authentication,
+          children: [
+            {
+              path: '',
+              name: 'transaksi.index',
+              component: TransaksiView
+            },
+          ]
+        },
+        {
+          path: '/laporan-transaksi',
+          meta: { requiresAuth: true },
+          beforeEnter: Authentication,
+          children: [
+            {
+              path: '',
+              name: 'laporan.index',
+              component: LaporanView
+            },
+          ]
+        }
       ]
     },
     {
